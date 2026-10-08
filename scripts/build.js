@@ -73,6 +73,10 @@ async function build() {
   copyRecursive(assetsSrc, assetsDst);
 
   fs.writeFileSync(path.join(outDir, 'index.html'), rendered, 'utf8');
+
+  // Tell GitHub Pages to serve the files as-is instead of running Jekyll.
+  fs.writeFileSync(path.join(outDir, '.nojekyll'), '', 'utf8');
+
   console.log('Build complete -> _site/index.html generated.');
 }
 

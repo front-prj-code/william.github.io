@@ -67,17 +67,52 @@ If you add an `<ion-icon name="...">`, download that icon's SVG into
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site on
 Node 22 and publishes `_site` through GitHub Pages.
 
-One-time setup in the repository: **Settings → Pages → Build and deployment →
-Source: GitHub Actions**.
+The remote is already configured as `front-prj-code/william.github.io`:
 
-Note the URL depends on the repository name:
+```
+git remote -v
+# origin  git@github.com:front-prj-code/william.github.io.git
+```
 
-- repo `front-prj-code.github.io` → `https://front-prj-code.github.io/`
-- repo `william.github.io` → `https://front-prj-code.github.io/william.github.io/`
+### First deploy
 
-All asset paths are relative, so both work without changes.
+1. Create the repository (leave it **completely empty** — no README, no
+   `.gitignore`, no license):
+
+   https://github.com/organizations/front-prj-code/repositories/new?name=william.github.io
+
+2. Run the helper, which checks the tree, confirms the repo exists, then pushes:
+
+   ```bash
+   ./deploy.sh
+   ```
+
+3. In the repository: **Settings → Pages → Build and deployment →
+   Source: GitHub Actions**.
+
+4. The **Actions** tab runs `Deploy to GitHub Pages`; the first run takes a
+   couple of minutes.
+
+### The URL
+
+The published address depends on the repository name:
+
+| Repository | URL |
+|---|---|
+| `front-prj-code/william.github.io` | `https://front-prj-code.github.io/william.github.io/` |
+| `front-prj-code/front-prj-code.github.io` | `https://front-prj-code.github.io/` |
+
+All asset paths are relative, so either works with no code changes. If you want a
+bare `william.github.io`, that requires a custom domain — a repository name alone
+cannot produce it when the owner is the `front-prj-code` organisation.
+
+Note for organisations: Pages must be allowed for the repository by an org owner,
+and if the organisation uses a policy restricting GitHub Actions, the workflow may
+need approval before its first run.
 
 ## Before publishing
 
-- Replace the placeholder project images.
+- Replace the placeholder project images (15 of them under
+  `assets/images/projects/`).
 - Check that the birthday shown in the sidebar is what you want public.
+
