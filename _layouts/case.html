@@ -30,7 +30,12 @@
         </ul>
       </nav>
 
-      <article class="case">
+      <!--
+        - `active` is required: the stylesheet hides every <article> that does
+          not carry it, which is how the single-page sections stay hidden. A
+          case page shows exactly one article, so it is always active.
+      -->
+      <article class="case active">
 
         <header class="case-header">
           <span class="project-modal-badge">{{ page.work.category }}</span>

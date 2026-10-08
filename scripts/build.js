@@ -110,6 +110,25 @@ async function buildCaseStudies() {
     };
 
     const html = await engine.parseAndRender(layout, { site, page });
+
+    // A case page that renders but is blank in the browser is the worst kind of
+    // failure: the build succeeds, the file is served, and the page looks empty
+    // with no error anywhere. The stylesheet hides every <article> without the
+    // `active` class, so assert the marker survived and that content is present.
+    if (!html.includes('class="case active"')) {
+      throw new Error(
+        'work/' + work.slug + '.html rendered without the "active" class on its ' +
+        'article. The stylesheet sets `article { display: none }`, so this page ' +
+        'would appear blank. Check _layouts/case.html.'
+      );
+    }
+    if (!html.includes('case-heading')) {
+      throw new Error(
+        'work/' + work.slug + '.html rendered without any content blocks. ' +
+        'Check the case-studies entry for "' + work.slug + '".'
+      );
+    }
+
     writeOut(path.join('work', work.slug + '.html'), html);
     count++;
   }

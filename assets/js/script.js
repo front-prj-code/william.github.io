@@ -5,6 +5,19 @@
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
+// Bind only when the element is present. One script serves both the single page
+// and the case study pages, and those two do not contain the same components:
+// a case page has no filter list, no contact form and no modal. Binding
+// directly would throw on the first missing element and stop the rest of the
+// file from running, so every lookup below goes through this.
+const on = function (el, event, handler) {
+  if (el) el.addEventListener(event, handler);
+};
+
+const setText = function (el, value) {
+  if (el) el.innerText = value;
+};
+
 
 
 // sidebar variables
@@ -12,7 +25,7 @@ const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+on(sidebarBtn, "click", function () { elementToggleFunc(sidebar); });
 
 
 
@@ -50,8 +63,8 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 }
 
 // add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+on(modalCloseBtn, "click", testimonialsModalFunc);
+on(overlay, "click", testimonialsModalFunc);
 
 
 
@@ -61,15 +74,15 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+on(select, "click", function () { elementToggleFunc(this); });
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
+    setText(selectValue, this.innerText);
+    if (select) elementToggleFunc(select);
     filterFunc(selectedValue);
 
   });
@@ -102,10 +115,10 @@ for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+    setText(selectValue, this.innerText);
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
 
@@ -123,6 +136,8 @@ const formBtn = document.querySelector("[data-form-btn]");
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
+
+    if (!form || !formBtn) return;
 
     // check form validation
     if (form.checkValidity()) {
