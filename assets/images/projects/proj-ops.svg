@@ -1,51 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#202024"/><stop offset="100%" stop-color="#17171a"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.72">
-      <stop offset="0%" stop-color="#a2603a" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#a2603a" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="800" height="500" fill="url(#bg)"/>
-  <rect width="800" height="500" fill="url(#glow)"/>
-  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.035" stroke="#ffffff" stroke-opacity="0.1"/>
-  <line x1="60" y1="80" x2="740" y2="80" stroke="#ffffff" stroke-opacity="0.10"/>
-  <circle cx="82" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
-  <circle cx="98" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
-  <circle cx="114" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
-  <rect x="88" y="108" width="150" height="8" rx="3" fill="#ffffff" fill-opacity="0.16"/>
-  <rect x="88" y="132" width="146" height="76" rx="9" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>
-  <rect x="104" y="150" width="58" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.13"/>
-  <rect x="104" y="170" width="92" height="14" rx="4" fill="#a2603a" fill-opacity="0.42"/>
-  <rect x="246" y="132" width="146" height="76" rx="9" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>
-  <rect x="262" y="150" width="58" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.13"/>
-  <rect x="262" y="170" width="92" height="14" rx="4" fill="#a2603a" fill-opacity="0.42"/>
-  <rect x="404" y="132" width="146" height="76" rx="9" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>
-  <rect x="420" y="150" width="58" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.13"/>
-  <rect x="420" y="170" width="92" height="14" rx="4" fill="#a2603a" fill-opacity="0.42"/>
-  <rect x="562" y="132" width="146" height="76" rx="9" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.09"/>
-  <rect x="578" y="150" width="58" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.13"/>
-  <rect x="578" y="170" width="92" height="14" rx="4" fill="#a2603a" fill-opacity="0.42"/>
-  <rect x="88" y="226" width="624" height="38" rx="7" fill="#ffffff" fill-opacity="0.045"/>
-  <rect x="104" y="241" width="12" height="12" rx="3" fill="#a2603a" fill-opacity="0.55"/>
-  <rect x="130" y="242" width="210" height="8" rx="4" fill="#ffffff" fill-opacity="0.12"/>
-  <rect x="370" y="242" width="90" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <rect x="492" y="238" width="60" height="15" rx="7.5" fill="#a2603a" fill-opacity="0.28"/>
-  <rect x="600" y="242" width="96" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <rect x="88" y="272" width="624" height="38" rx="7" fill="#ffffff" fill-opacity="0.028"/>
-  <rect x="104" y="287" width="12" height="12" rx="3" fill="#ffffff" fill-opacity="0.16"/>
-  <rect x="130" y="288" width="210" height="8" rx="4" fill="#ffffff" fill-opacity="0.12"/>
-  <rect x="370" y="288" width="90" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <rect x="492" y="284" width="60" height="15" rx="7.5" fill="#a2603a" fill-opacity="0.28"/>
-  <rect x="600" y="288" width="96" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <rect x="88" y="318" width="624" height="38" rx="7" fill="#ffffff" fill-opacity="0.045"/>
-  <rect x="104" y="333" width="12" height="12" rx="3" fill="#ffffff" fill-opacity="0.16"/>
-  <rect x="130" y="334" width="210" height="8" rx="4" fill="#ffffff" fill-opacity="0.12"/>
-  <rect x="370" y="334" width="90" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <rect x="492" y="330" width="60" height="15" rx="7.5" fill="#a2603a" fill-opacity="0.28"/>
-  <rect x="600" y="334" width="96" height="8" rx="4" fill="#ffffff" fill-opacity="0.09"/>
-  <text x="400" y="438" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">Operations &amp; Risk Console</text>
-  <text x="400" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#ffe071" fill-opacity="0.8" letter-spacing="2">ADMIN &amp; RISK</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="proj-ops">
+  <rect width="800" height="450" fill="#17171a"/>
+  <rect x="12" y="12" width="776" height="426" rx="12" fill="#2c2c33" fill-opacity="1" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"/>
+  <line x1="12" y1="48" x2="788" y2="48" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/>
+  <circle cx="34" cy="30" r="4.5" fill="#e05a4e" fill-opacity="0.9"/>
+  <circle cx="50" cy="30" r="4.5" fill="#ffd95e" fill-opacity="0.9"/>
+  <circle cx="66" cy="30" r="4.5" fill="#3fa87b" fill-opacity="0.9"/>
+  <text x="140" y="34" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#ffffff" fill-opacity="0.42" letter-spacing="0">operations console</text>
+  <rect x="12" y="48" width="776" height="390" rx="0" fill="#34343c" fill-opacity="1"/>
+  <rect x="34" y="62" width="176" height="86" rx="10" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="48" y="86" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.5" letter-spacing="0.5">OPEN ALERTS</text>
+  <text x="48" y="114" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">14</text>
+  <rect x="48" y="124" width="62" height="18" rx="9" fill="#e05a4e" fill-opacity="0.4"/>
+  <text x="56" y="137" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e05a4e" fill-opacity="1" letter-spacing="0">3 critical</text>
+  <rect x="222" y="62" width="176" height="86" rx="10" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="236" y="86" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.5" letter-spacing="0.5">NODES ONLINE</text>
+  <text x="236" y="114" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">212</text>
+  <rect x="236" y="124" width="62" height="18" rx="9" fill="#3fa87b" fill-opacity="0.4"/>
+  <text x="244" y="137" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#3fa87b" fill-opacity="1" letter-spacing="0">98.6%</text>
+  <rect x="410" y="62" width="176" height="86" rx="10" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="424" y="86" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.5" letter-spacing="0.5">24H WITHDRAWALS</text>
+  <text x="424" y="114" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">1,842</text>
+  <rect x="424" y="124" width="62" height="18" rx="9" fill="#ffd95e" fill-opacity="0.4"/>
+  <text x="432" y="137" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#ffd95e" fill-opacity="1" letter-spacing="0">+12.4%</text>
+  <rect x="598" y="62" width="166" height="86" rx="10" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="612" y="86" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.5" letter-spacing="0.5">PENDING REVIEW</text>
+  <text x="612" y="114" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">27</text>
+  <rect x="612" y="124" width="62" height="18" rx="9" fill="#5f93d8" fill-opacity="0.4"/>
+  <text x="620" y="137" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#5f93d8" fill-opacity="1" letter-spacing="0">queued</text>
+  <rect x="34" y="162" width="730" height="256" rx="10" fill="#25252b" fill-opacity="1"/>
+  <text x="52" y="186" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="400" fill="#ffffff" fill-opacity="0.55" letter-spacing="0.6">ABNORMAL ACTIVITY</text>
+  <text x="52" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">TIME</text>
+  <text x="148" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">ACCOUNT</text>
+  <text x="292" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">TYPE</text>
+  <text x="396" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">AMOUNT</text>
+  <text x="512" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">SEVERITY</text>
+  <text x="636" y="210" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="400" fill="#ffffff" fill-opacity="0.45" letter-spacing="0.5">STATUS</text>
+  <line x1="52" y1="220" x2="748" y2="220" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"/>
+  <rect x="44" y="229" width="710" height="30" rx="6" fill="#ffffff" fill-opacity="0.055"/>
+  <text x="52" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">11:04</text>
+  <text x="148" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">u_4821</text>
+  <text x="292" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">Withdrawal</text>
+  <text x="396" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">18.20 BTC</text>
+  <rect x="512" y="231" width="72" height="18" rx="9" fill="#e05a4e" fill-opacity="0.4"/>
+  <text x="522" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e05a4e" fill-opacity="1" letter-spacing="0">High</text>
+  <text x="636" y="244" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.6" letter-spacing="0">Investigating</text>
+  <text x="52" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">10:58</text>
+  <text x="148" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">u_1174</text>
+  <text x="292" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">API key</text>
+  <text x="396" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">new IP</text>
+  <rect x="512" y="265" width="72" height="18" rx="9" fill="#e89044" fill-opacity="0.4"/>
+  <text x="522" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e89044" fill-opacity="1" letter-spacing="0">Medium</text>
+  <text x="636" y="278" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.6" letter-spacing="0">Flagged</text>
+  <rect x="44" y="297" width="710" height="30" rx="6" fill="#ffffff" fill-opacity="0.055"/>
+  <text x="52" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">10:41</text>
+  <text x="148" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">u_9032</text>
+  <text x="292" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">Login</text>
+  <text x="396" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">4 regions</text>
+  <rect x="512" y="299" width="72" height="18" rx="9" fill="#e05a4e" fill-opacity="0.4"/>
+  <text x="522" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e05a4e" fill-opacity="1" letter-spacing="0">High</text>
+  <text x="636" y="312" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.6" letter-spacing="0">Blocked</text>
+  <text x="52" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">10:22</text>
+  <text x="148" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">u_6650</text>
+  <text x="292" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">Transfer</text>
+  <text x="396" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">1,240 ETH</text>
+  <rect x="512" y="333" width="72" height="18" rx="9" fill="#5f93d8" fill-opacity="0.4"/>
+  <text x="522" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#5f93d8" fill-opacity="1" letter-spacing="0">Low</text>
+  <text x="636" y="346" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.6" letter-spacing="0">Cleared</text>
+  <rect x="44" y="365" width="710" height="30" rx="6" fill="#ffffff" fill-opacity="0.055"/>
+  <text x="52" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">09:57</text>
+  <text x="148" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">u_3318</text>
+  <text x="292" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.65" letter-spacing="0">Order</text>
+  <text x="396" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#ffffff" fill-opacity="0.95" letter-spacing="0">wash pattern</text>
+  <rect x="512" y="367" width="72" height="18" rx="9" fill="#e89044" fill-opacity="0.4"/>
+  <text x="522" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e89044" fill-opacity="1" letter-spacing="0">Medium</text>
+  <text x="636" y="380" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.6" letter-spacing="0">Monitoring</text>
 </svg>
