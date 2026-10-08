@@ -81,17 +81,26 @@ git remote -v
 
    https://github.com/organizations/front-prj-code/repositories/new?name=william.github.io
 
-2. Run the helper, which checks the tree, confirms the repo exists, then pushes:
+2. **Make it public.** GitHub Pages is not available for private repositories on
+   a free plan — the deploy workflow fails with a permissions error. Either set
+   the repository to public (**Settings → General → Danger Zone → Change
+   repository visibility**), or use a paid plan. A portfolio site is normally
+   public anyway.
+
+3. Push, then confirm the repository is reachable:
 
    ```bash
    ./deploy.sh
    ```
 
-3. In the repository: **Settings → Pages → Build and deployment →
+   The script checks the working tree, verifies the remote over SSH, then pushes.
+
+4. In the repository: **Settings → Pages → Build and deployment →
    Source: GitHub Actions**.
 
-4. The **Actions** tab runs `Deploy to GitHub Pages`; the first run takes a
-   couple of minutes.
+5. The **Actions** tab runs `Deploy to GitHub Pages`. If it already ran and
+   failed, use **Re-run all jobs**. The first successful run takes a couple of
+   minutes.
 
 ### The URL
 
