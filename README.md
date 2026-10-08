@@ -35,13 +35,21 @@ npm run build    # writes _site/index.html
 The filter buttons compare their own label, lowercased, against each project's
 `category_slug`. So for a category named `Trading UI` the slug must be exactly
 `trading ui`. If they drift, that category silently matches nothing. `All` is a
-special case.
+special case, and categories containing `&` keep the `&` in the slug
+(`Wallet & Assets` → `wallet & assets`).
+
+Current categories: Trading UI, Mobile, Wallet & Assets, Admin & Risk,
+Design System, Brand & Visual, AI Products.
 
 ### Project images
 
-`assets/images/projects/*.svg` are placeholder wireframes, not real work. Replace
-them by pointing the `image` field at real exports. Keep roughly 16:10 and under
-about 200 KB each.
+`assets/images/projects/*.svg` are 15 hand-drawn placeholder wireframes, not real
+work. Replace them by pointing each `image` field at a real export. Keep roughly
+16:10 and under about 200 KB each.
+
+Adding a project: drop the file in `assets/images/projects/`, add an entry to
+`_data/projects.yml`, and reuse one of the existing `category` / `category_slug`
+pairs if it belongs to a category that already exists.
 
 ## Assets, all self-hosted
 

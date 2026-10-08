@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#202024"/><stop offset="100%" stop-color="#17171a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.72">
+      <stop offset="0%" stop-color="#3f7d8c" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#3f7d8c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.035" stroke="#ffffff" stroke-opacity="0.1"/>
+  <line x1="60" y1="80" x2="740" y2="80" stroke="#ffffff" stroke-opacity="0.10"/>
+  <circle cx="82" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="98" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="114" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <rect x="88" y="112" width="148" height="8" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="140" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.05"/>
+  <circle cx="144" cy="176" r="18" fill="#3f7d8c" fill-opacity="0.1"/>
+  <rect x="216" y="140" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.066"/>
+  <circle cx="272" cy="176" r="23" fill="#3f7d8c" fill-opacity="0.14500000000000002"/>
+  <rect x="344" y="140" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.082"/>
+  <circle cx="400" cy="176" r="28" fill="#3f7d8c" fill-opacity="0.19"/>
+  <rect x="472" y="140" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.098"/>
+  <circle cx="528" cy="176" r="18" fill="#3f7d8c" fill-opacity="0.23500000000000001"/>
+  <rect x="600" y="140" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.05"/>
+  <circle cx="656" cy="176" r="23" fill="#3f7d8c" fill-opacity="0.1"/>
+  <rect x="88" y="228" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.066"/>
+  <circle cx="144" cy="264" r="18" fill="#3f7d8c" fill-opacity="0.1"/>
+  <rect x="216" y="228" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.082"/>
+  <circle cx="272" cy="264" r="23" fill="#3f7d8c" fill-opacity="0.14500000000000002"/>
+  <rect x="344" y="228" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.098"/>
+  <circle cx="400" cy="264" r="28" fill="#3f7d8c" fill-opacity="0.19"/>
+  <rect x="472" y="228" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.05"/>
+  <circle cx="528" cy="264" r="18" fill="#3f7d8c" fill-opacity="0.23500000000000001"/>
+  <rect x="600" y="228" width="112" height="72" rx="8" fill="#ffffff" fill-opacity="0.066"/>
+  <circle cx="656" cy="264" r="23" fill="#3f7d8c" fill-opacity="0.1"/>
+  <line x1="88" y1="322" x2="712" y2="322" stroke="#3f7d8c" stroke-opacity="0.3" stroke-dasharray="5 5"/>
+  <rect x="88" y="344" width="624" height="8" rx="4" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="88" y="344" width="396" height="8" rx="4" fill="#3f7d8c" fill-opacity="0.3"/>
+  <text x="400" y="380" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#ffffff" fill-opacity="0.3" letter-spacing="1.6">PROMPT  ·  EXPLORE  ·  SELECT  ·  REFINE</text>
+  <text x="400" y="438" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">AIGC Visual Exploration Pipeline</text>
+  <text x="400" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#ffe071" fill-opacity="0.8" letter-spacing="2">AI PRODUCTS</text>
+</svg>

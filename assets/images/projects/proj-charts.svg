@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#202024"/><stop offset="100%" stop-color="#17171a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.72">
+      <stop offset="0%" stop-color="#c2453e" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#c2453e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.035" stroke="#ffffff" stroke-opacity="0.1"/>
+  <line x1="60" y1="80" x2="740" y2="80" stroke="#ffffff" stroke-opacity="0.10"/>
+  <circle cx="82" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="98" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="114" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <rect x="88" y="108" width="130" height="8" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="132" width="624" height="190" rx="8" fill="#ffffff" fill-opacity="0.04"/>
+  <polyline points="M104,232 L152,196 L200,214 L248,164 L296,186 L344,138 L392,158 L440,112 L488,132 L536,96 L584,118 L632,86" fill="none" stroke="#c2453e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <rect x="104" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="208" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="312" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="416" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="520" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <rect x="624" y="132" width="1" height="190" rx="0" fill="#ffffff" fill-opacity="0.07"/>
+  <line x1="88" y1="348" x2="712" y2="348" stroke="#ffffff" stroke-opacity="0.10"/>
+  <rect x="104" y="362" width="70" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="104" y="362" width="54" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="104" y="362" width="84" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="104" y="362" width="62" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="104" y="362" width="48" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <circle cx="200" cy="214" r="6" fill="#c2453e" fill-opacity="0.85"/>
+  <circle cx="200" cy="214" r="13" fill="#c2453e" fill-opacity="0.20"/>
+  <circle cx="440" cy="112" r="6" fill="#c2453e" fill-opacity="0.85"/>
+  <circle cx="440" cy="112" r="13" fill="#c2453e" fill-opacity="0.20"/>
+  <circle cx="632" cy="86" r="6" fill="#c2453e" fill-opacity="0.85"/>
+  <circle cx="632" cy="86" r="13" fill="#c2453e" fill-opacity="0.20"/>
+  <text x="400" y="438" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">Candlestick &amp; Market Data Components</text>
+  <text x="400" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#ffe071" fill-opacity="0.8" letter-spacing="2">TRADING UI</text>
+</svg>

@@ -1,15 +1,21 @@
 # 核心匹配能力，对应 WEEX 岗位要求
 - title: "Web3 product depth"
-  description: "CEX, DEX, wallet, DApp, trading terminal, assets and payments, risk consoles. Familiar with the user-side of spot, futures, order books, K-lines, depth, funding rates, deposits and withdrawals, signing, MPC and multisig."
+  description: "CEX, DEX, wallet, DApp, trading terminal, assets and payments, risk consoles, chain games. Familiar with the user-side of spot, futures, order books, K-lines, depth, funding rates, deposits and withdrawals, signing, MPC and multisig."
 
-- title: "UI/UX for complex flows"
-  description: "Multi-step transaction flows, information hierarchy, state feedback, error and risk warnings, responsive layout, multi-platform adaptation, component design, design systems and product interaction architecture."
+- title: "Web and mobile interface design"
+  description: "WEB, H5 and APP products from 0 to 1. Product flows, information hierarchy, state feedback, risk and error handling, component design, design systems, responsive layout and multi-platform adaptation."
+
+- title: "Visual design and art direction"
+  description: "Identity systems, overseas campaign visuals and spatial concepts for branded Web3 environments. International typography, colour and imagery judgement rather than a single house style applied everywhere."
+
+- title: "Motion design"
+  description: "Interaction and marketing animation in Lottie and Rive, with duration, easing and state transitions specified well enough to hand over. Motion used to explain state change, not to decorate."
 
 - title: "Visual and interaction engineering"
   description: "React, Next.js, TypeScript and React Native. Able to turn a design file into a real, running interface, including live quotes, WebSocket updates, trade states, wallet connection and mobile interaction."
 
-- title: "AI and AIGC-assisted design"
-  description: "LLM, agent, RAG, ComfyUI and FLUX. Used for visual exploration, page prototypes, asset generation and copy iteration, which shortens the loop from concept to demo."
+- title: "AIGC-assisted design"
+  description: "ComfyUI and FLUX used to generate and iterate visual directions, build page prototypes and produce assets. Shortens the loop from concept to a reviewable demo."
 
-- title: "International product work"
-  description: "English information architecture for product surfaces, Web3 scenarios for international users, multi-language, time-zone and currency handling, overseas user habits and cross-team collaboration."
+- title: "International collaboration"
+  description: "English for meetings, requirements and written documents. Multi-language, time-zone and currency handling, and the habit of checking what a visual actually means in the target market."

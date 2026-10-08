@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#202024"/><stop offset="100%" stop-color="#17171a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.72">
+      <stop offset="0%" stop-color="#d4713a" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#d4713a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.035" stroke="#ffffff" stroke-opacity="0.1"/>
+  <line x1="60" y1="80" x2="740" y2="80" stroke="#ffffff" stroke-opacity="0.10"/>
+  <circle cx="82" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="98" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="114" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.04"/>
+  <rect x="88" y="78" width="180" height="8" rx="4" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="110" width="190" height="130" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.09"/>
+  <circle cx="138" cy="150" r="22" fill="#d4713a" fill-opacity="0.55"/>
+  <rect x="112" y="190" width="120" height="8" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="112" y="206" width="82" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.09"/>
+  <rect x="300" y="110" width="190" height="130" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.09"/>
+  <circle cx="350" cy="150" r="22" fill="#d4713a" fill-opacity="0.41000000000000003"/>
+  <rect x="324" y="190" width="120" height="8" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="324" y="206" width="82" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.09"/>
+  <rect x="512" y="110" width="190" height="130" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.09"/>
+  <circle cx="562" cy="150" r="22" fill="#d4713a" fill-opacity="0.27"/>
+  <rect x="536" y="190" width="120" height="8" rx="4" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="536" y="206" width="82" height="7" rx="3.5" fill="#ffffff" fill-opacity="0.09"/>
+  <rect x="88" y="262" width="190" height="116" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+  <rect x="300" y="262" width="412" height="50" rx="10" fill="#ffffff" fill-opacity="0.05"/>
+  <rect x="300" y="328" width="412" height="50" rx="10" fill="#ffffff" fill-opacity="0.05"/>
+  <rect x="320" y="280" width="160" height="13" rx="6" fill="#d4713a" fill-opacity="0.22"/>
+  <rect x="320" y="346" width="120" height="13" rx="6" fill="#ffffff" fill-opacity="0.12"/>
+  <text x="400" y="438" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff" fill-opacity="1" letter-spacing="0">Brand Identity &amp; Marketing Kit</text>
+  <text x="400" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#ffe071" fill-opacity="0.8" letter-spacing="2">BRAND &amp; VISUAL</text>
+</svg>

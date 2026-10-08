@@ -1,5 +1,8 @@
 - group: "Product / UI"
-  items: "Figma, FigJam (prototypes, components, interaction specs), Design System, Responsive, Mobile/Web, multi-language product design"
+  items: "Figma, FigJam (prototypes, components, interaction specs), Design System, Responsive, Mobile/Web, multi-platform adaptation, multi-language product design"
+
+- group: "Visual / Motion"
+  items: "Sketch, Photoshop, Illustrator, After Effects, Lottie, Rive, Blender, identity systems, campaign visuals, spatial and environment concepts"
 
 - group: "Frontend"
   items: "React, Next.js, TypeScript, React Native, Tailwind, Zustand / Redux, React Query, Storybook, WebSocket"
@@ -8,7 +11,7 @@
   items: "EVM, Ethereum, Solana, TRON, WalletConnect, viem / ethers.js / wagmi, RPC, Indexer, MPC, Multisig, ERC-20 / 721 / 1155"
 
 - group: "AI / AIGC"
-  items: "LLM, Agent, RAG, MCP, LangChain / LangGraph, Dify, n8n, ComfyUI, FLUX, Ollama, vLLM"
+  items: "ComfyUI, FLUX, LLM, Agent, RAG, MCP, LangChain / LangGraph, Dify, n8n, Ollama, vLLM"
 
 - group: "Engineering"
   items: "Go, Java, Python, C++, Docker, Kubernetes, PostgreSQL, Redis, Kafka, Prometheus / Grafana, OpenTelemetry"

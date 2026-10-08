@@ -1,19 +1,29 @@
 - title: "WEB / H5 / APP Interface & Interaction Design"
   icon: "./assets/images/icon-design.svg"
   alt: "interface and interaction design icon"
-  description: "End-to-end design for web, H5 and app products: product flows, information hierarchy, interaction specs and the responsive layouts that hold up on all three."
+  description: "End-to-end design for web, H5 and app products: product flows, information hierarchy, interaction specs and the responsive, multi-platform layouts that hold up on all three."
 
 - title: "Trading & Transaction Flows"
   icon: "./assets/images/icon-dev.svg"
   alt: "trading flow icon"
   description: "Order books, candlesticks, depth, positions, funding rates, deposits and withdrawals, wallet signing. The work is mostly in the states: loading, partial fill, risk warning, failure and recovery."
 
+- title: "Brand & Marketing Visuals"
+  icon: "./assets/images/icon-photo.svg"
+  alt: "brand and marketing visual icon"
+  description: "Identity systems and campaign visuals for international audiences, plus spatial concepts for branded Web3 environments. Same brand core, adjusted for how each market actually reads it."
+
 - title: "Design Systems & Component Libraries"
   icon: "./assets/images/icon-quote.svg"
   alt: "design system icon"
-  description: "Unified colour, spacing and type tokens plus buttons, forms, tables, modals, toasts and status tags, so multi-platform delivery stops being a redesign every time."
+  description: "Colour, spacing and type tokens plus buttons, forms, tables, modals, toasts and status tags, so multi-platform delivery stops turning into a redesign every time."
 
-- title: "Design-to-Code & AI-assisted Exploration"
+- title: "Motion Design"
   icon: "./assets/images/icon-app.svg"
+  alt: "motion design icon"
+  description: "Interaction and marketing animation specified in Lottie and Rive: durations, easing and state transitions written down, so motion is a decision rather than whatever the implementer picks."
+
+- title: "Design-to-Code & AIGC Exploration"
+  icon: "./assets/images/icon-dev.svg"
   alt: "design to code icon"
-  description: "Figma output turned into working React / Next.js / TypeScript interfaces, with LLM and AIGC tooling (ComfyUI, FLUX) used for visual exploration and faster concept-to-demo."
+  description: "Figma output turned into working React / Next.js / TypeScript interfaces, with AIGC tooling (ComfyUI, FLUX) used to generate and iterate visual directions before committing to one."
