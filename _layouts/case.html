@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class="case-page">
+
+  <main>
+
+    {% include sidebar.html %}
+
+    <div class="main-content">
+
+      <!--
+        - top bar: the case pages sit outside the single-page app, so this is a
+          plain link back to the portfolio section rather than the JS nav.
+      -->
+      <nav class="case-nav">
+        <a class="case-back" href="{{ page.base }}/index.html#portfolio">
+          <ion-icon name="chevron-down"></ion-icon>
+          <span>All work</span>
+        </a>
+
+        <ul class="case-nav-links">
+          <li><a href="{{ page.base }}/index.html#about">About</a></li>
+          <li><a href="{{ page.base }}/index.html#resume">Resume</a></li>
+          <li><a href="{{ page.base }}/index.html#portfolio">Portfolio</a></li>
+          <li><a href="{{ page.base }}/index.html#toolbox">Toolbox</a></li>
+          <li><a href="{{ page.base }}/index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <article class="case">
+
+        <header class="case-header">
+          <span class="project-modal-badge">{{ page.work.category }}</span>
+          <h1 class="h1 case-title">{{ page.work.title }}</h1>
+          <p class="case-lede">{{ page.work.lede }}</p>
+        </header>
+
+        <figure class="case-hero">
+          <img src="{{ page.base }}/{{ page.project.image }}" alt="{{ page.project.alt }}" width="800" height="450">
+        </figure>
+
+        <dl class="case-meta">
+          {% for m in page.work.meta %}
+          <div class="case-meta-item">
+            <dt>{{ m.label }}</dt>
+            <dd>{{ m.value }}</dd>
+          </div>
+          {% endfor %}
+        </dl>
+
+        <section class="case-block">
+          {% for para in page.work.intro %}
+          <p class="case-text">{{ para }}</p>
+          {% endfor %}
+        </section>
+
+        <section class="case-block">
+          <h2 class="h3 case-heading">The problem</h2>
+          {% for para in page.work.problem %}
+          <p class="case-text">{{ para }}</p>
+          {% endfor %}
+        </section>
+
+        <section class="case-block">
+          <h2 class="h3 case-heading">Process</h2>
+          <ol class="case-steps">
+            {% for step in page.work.process %}
+            <li class="case-step">
+              <span class="case-step-num">{{ forloop.index }}</span>
+              <div>
+                <h3 class="h4 case-step-title">{{ step.title }}</h3>
+                <p class="case-text">{{ step.text }}</p>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        <section class="case-block">
+          <h2 class="h3 case-heading">Key decisions</h2>
+          <ul class="case-decisions">
+            {% for d in page.work.decisions %}
+            <li class="case-decision">
+              <h3 class="h4 case-decision-title">{{ d.title }}</h3>
+              <p class="case-text">{{ d.text }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section class="case-block">
+          <h2 class="h3 case-heading">Outcome</h2>
+          {% for para in page.work.outcome %}
+          <p class="case-text">{{ para }}</p>
+          {% endfor %}
+        </section>
+
+        <section class="case-block case-block-last">
+          <h2 class="h3 case-heading">What I would change</h2>
+          {% for para in page.work.next %}
+          <p class="case-text">{{ para }}</p>
+          {% endfor %}
+        </section>
+
+        <nav class="case-pager">
+          {% if page.prev %}
+          <a class="case-pager-item case-pager-prev" href="{{ page.base }}/work/{{ page.prev.slug }}.html">
+            <span class="case-pager-label">Previous</span>
+            <span class="case-pager-title">
+              <ion-icon name="chevron-down"></ion-icon>
+              {{ page.prev.title }}
+            </span>
+          </a>
+          {% else %}<span></span>{% endif %}
+
+          {% if page.next %}
+          <a class="case-pager-item case-pager-next" href="{{ page.base }}/work/{{ page.next.slug }}.html">
+            <span class="case-pager-label">Next</span>
+            <span class="case-pager-title">
+              {{ page.next.title }}
+              <ion-icon name="chevron-down"></ion-icon>
+            </span>
+          </a>
+          {% else %}<span></span>{% endif %}
+        </nav>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  {% include scripts.html %}
+
+</body>
+
+</html>

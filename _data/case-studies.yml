@@ -1,0 +1,398 @@
+# 作品详情页内容。
+# 每个项目一张案例页，讲清设计链路：背景 → 问题 → 过程 → 关键决策 → 结果。
+# slug 必须与 projects.yml 里每个条目的 slug 一致。
+
+- slug: proj-terminal
+  title: "Spot & Futures Trading Terminal"
+  category: "Trading UI"
+  lede: "A web terminal where the screen has to stay truthful while the market moves. Candles, order book, depth, orders and fills, funding rate, liquidation and insurance fund in one frame."
+  meta:
+    - { label: "Role", value: "Product design, interaction, front-end" }
+    - { label: "Platforms", value: "WEB · H5 · APP" }
+    - { label: "Scope", value: "Spot and futures, 4 market views" }
+  intro:
+    - "Traders keep this screen open for hours. That changes what matters. Breathing room, empty space and generous padding are wasted; what counts is how fast the eye finds the number that changed, and whether the screen is still telling the truth when the connection is not."
+    - "The layout went through several rounds before it settled. The version that survived puts price and change at the top of the reading order, keeps the chart as the largest single block, and pushes the order ticket to a fixed column rather than a modal."
+  problem:
+    - "A terminal fails in two ways that look unrelated but are the same problem. It goes stale, so the price on screen is no longer the price. Or it goes noisy, so every tick repaints and the eye cannot hold onto anything. Both come from treating incoming data as something to render rather than something to reconcile."
+  process:
+    - { title: "Map the reading order", text: "Started from what a trader checks in the first three seconds of glancing back. Price, then change, then position, then chart. Everything else was ranked below that line and moved out of the primary column." }
+    - { title: "Define the state model", text: "Listed every state a single price can be in: live, stale, reconnecting, last known, and no data at all. Each got a distinct treatment, because an invented price is worse than an obviously missing one." }
+    - { title: "Design the grid before the details", text: "Settled the column structure and how it collapses on H5 and app first. Trading components are dense; retrofitting a smaller screen later means rebuilding them." }
+    - { title: "Specify the motion budget", text: "Decided which values animate and which do not. Flashing numbers on every tick made the screen unreadable, so change indication was slowed down and colour carried the meaning instead." }
+  decisions:
+    - { title: "Reconcile, then render", text: "Incoming deltas are coalesced into a single frame update instead of repainting per message. More work in the data layer, far less visual churn. The screen moves at a rate a person can follow." }
+    - { title: "Fixed order ticket", text: "A modal for placing an order hides the price at the moment of commitment. Keeping the ticket pinned means the number you act on stays visible while you act on it." }
+    - { title: "Visible degradation", text: "Dropped connections downgrade the screen rather than freezing it. Stale values are marked, trading is disabled, the last good state stays readable. A trader needs to know the difference between the market being quiet and the feed being dead." }
+  outcome:
+    - "The terminal became the base layer the other trading surfaces were built from. The chart, the price ladder and the order ticket were extracted into reusable components once they had proven themselves here."
+  next:
+    - "The indicator controls are still too dense for occasional users. I would split them into a default set and an advanced drawer rather than showing everything at once."
+
+- slug: proj-orderbook
+  title: "Order Book & Depth Visualisation"
+  category: "Trading UI"
+  lede: "The densest screen in the product, read under pressure. Price ladder, cumulative depth, spread marker, and bids and asks that stay legible at a glance."
+  meta:
+    - { label: "Role", value: "Product design, interaction, front-end" }
+    - { label: "Platforms", value: "WEB · APP" }
+    - { label: "Scope", value: "Ladder, depth curve, ratio summary" }
+  intro:
+    - "An order book is a table that people read at speed, so the design question is not how to style rows. It is how to make quantity visible without turning the numbers into decoration."
+  problem:
+    - "Plain numbers force a mental comparison for every level. Adding colour helps until both sides use strong fills, at which point bids and asks stop being distinguishable at a glance. The screen also has to survive a fast market, where levels appear and vanish several times a second."
+  process:
+    - { title: "Anchor the mid price", text: "Put the mid price and spread on a fixed, high-contrast band between the two sides. Every other row is read relative to it, so it has to be findable without searching." }
+    - { title: "Separate number from quantity", text: "Numbers stay on a plain background. Quantity becomes a soft fill behind the row. Two channels, no competition." }
+    - { title: "Test at real density", text: "Reviewed the layout with a live feed rather than static mock data, because a book that reads fine with five levels behaves differently with twenty." }
+    - { title: "Add the summary layer", text: "A cumulative depth curve and a bid/ask ratio bar sit beside the ladder for the trader who wants shape rather than individual levels." }
+  decisions:
+    - { title: "Row fills, not colour blocks", text: "Quantity is encoded as a low-saturation wash that grows with size. High-saturation fills were tried first and made the two sides ambiguous under speed." }
+    - { title: "No animation on the ladder", text: "Row transitions were removed. At this density, motion reads as instability. Values change in place instead." }
+    - { title: "Depth as a second view", text: "The curve is a companion panel, not a replacement for the ladder. Different traders want different things, and the two answer different questions." }
+  outcome:
+    - "The ladder pattern became the reference implementation for every other market view, including the mobile app, where it collapses to fewer levels and a narrower spread band rather than a different component."
+  next:
+    - "On narrow screens the spread band still competes with the first rows for attention. A collapsed default with an expand gesture would be better than showing everything at minimum size."
+
+- slug: proj-charts
+  title: "Candlestick & Market Data Components"
+  category: "Trading UI"
+  lede: "One charting layer reused across web, H5 and app, including the states that usually get skipped: stale data, no data, and a feed that has just reconnected."
+  meta:
+    - { label: "Role", value: "Component design, interaction, front-end" }
+    - { label: "Platforms", value: "WEB · H5 · APP" }
+    - { label: "Scope", value: "Candles, volume, indicators, drawing tools" }
+  intro:
+    - "Charts get rebuilt per screen more often than any other component, and each rebuild reintroduces the same set of bugs. The goal here was one layer with a stable interface, so a new market view means configuration rather than implementation."
+    - "Indicator overlays, timeframe switching and drawing tools all live in the same component, which forced the defaults to be decided once instead of per page."
+  problem:
+    - "The chart is the loudest element on the screen and the easiest to overload. Timeframes, indicator buttons, overlay lines and drawing tools can all be visible at once, and the price action ends up competing with its own controls."
+  process:
+    - { title: "Fix the control hierarchy", text: "Timeframe first, the most-used indicators second, the long tail of indicators and drawing tools behind a drawer. Frequency of use decided placement, not visual symmetry." }
+    - { title: "Define the visual grammar", text: "Settled one rule set for candles, volume and overlays: what a positive and negative period look like, how an average line reads against candles, and how indicator panels are separated from price." }
+    - { title: "Cover the missing states", text: "Designed stale, empty, reconnecting and insufficient-history states alongside the normal one, since these are what actually appear on a new listing or a bad connection." }
+    - { title: "Make it reusable", text: "Exposed the same properties on all three platforms so the chart behaves predictably wherever it is dropped in." }
+  decisions:
+    - { title: "Indicator panels, not overlays", text: "Volume, RSI and MACD get their own strips below the price rather than sharing the candle area. Overlaying them looked efficient and read badly." }
+    - { title: "Defaults that stay quiet", text: "A new chart opens without overlays. Lines are opt-in, so the first impression is the price rather than a chart covered in other charts." }
+    - { title: "Empty states that explain", text: "Insufficient history says so and shows what will appear, instead of rendering an empty grid that reads as a broken page." }
+  outcome:
+    - "New market views could be added by configuration. The component absorbed the difference between spot, futures and the mobile variants without forking."
+  next:
+    - "Drawing tools are the weakest part. They were left as a flat row of icons, and on touch they are genuinely hard to hit. This deserves a real redesign rather than more icons."
+
+- slug: proj-mobile
+  title: "Mobile Trading App"
+  category: "Mobile"
+  lede: "The same trading surface on a screen you hold in one hand, including the confirmation step that mobile trades usually skip."
+  meta:
+    - { label: "Role", value: "Product design, interaction, front-end" }
+    - { label: "Platforms", value: "iOS · Android (React Native)" }
+    - { label: "Scope", value: "Trade, positions, watchlist, fills" }
+  intro:
+    - "The mobile app is not the desktop layout shrunk down. It is the same decisions re-argued against a different set of constraints: one thumb, interruptions, and a habit of checking the market in ten-second bursts."
+    - "On desktop a trader sits with the screen. On mobile they open it, check one thing, and put it away. Those are different products even when they show the same numbers."
+  problem:
+    - "Opening a leveraged position takes one tap on desktop and is hard to undo. On a phone that tap is easy to make by accident and the consequence is the same. Meanwhile the position panel, which is what people actually open the app for, was competing for space with the order form."
+  process:
+    - { title: "Rank by session length", text: "Separated the screens people open for ten seconds from the ones they use for minutes. Position and watchlist became the default landing surface; the order form is a deliberate step." }
+    - { title: "Design for the thumb", text: "Put every decision target in the lower third. Buy and sell sit where the thumb rests, and the destructive side is not adjacent to a scroll gesture." }
+    - { title: "Insert a confirmation", text: "Opening or increasing a leveraged position gets a summary step with the resulting margin ratio shown before it is sent. Deliberately one extra tap on the path that can lose money." }
+    - { title: "Handle interruption", text: "Designed for a request that times out while the trader is switching apps, since that is the normal case on mobile rather than an edge case." }
+  decisions:
+    - { title: "Two-tap commitment, one-tap exit", text: "Opening risk is confirmed; reducing it is not. Asymmetric friction on purpose, because closing a position under stress should never be slowed down." }
+    - { title: "Show the health of the position", text: "Margin ratio is a first-class element on the position card, not a detail inside it. It is the number that decides whether the trader needs to act." }
+    - { title: "Warn without blocking", text: "A high margin ratio is surfaced in the app and in the trade flow, with the guidance attached. The app informs and lets the trader decide, rather than refusing the action." }
+  outcome:
+    - "Position and watchlist became the default view, and the order flow carries a confirmation that states the resulting exposure instead of only the order itself."
+  next:
+    - "Price alerts are still buried. For a phone, push-based notification design matters more than another screen, and it is the piece this version does least well."
+
+- slug: proj-wallet
+  title: "Wallet Connect & Signing Flow"
+  category: "Wallet & Assets"
+  lede: "One journey from connecting a wallet to a confirmed transaction, designed around the step where users stop trusting the product: the wait for a signature."
+  meta:
+    - { label: "Role", value: "Interaction design, front-end, chain integration" }
+    - { label: "Platforms", value: "WEB · H5" }
+    - { label: "Scope", value: "Connect, quote, sign, broadcast, recover" }
+  intro:
+    - "Nothing in a wallet flow is hard until the user has to leave. The moment they are sent to a wallet extension or app to approve a signature, the product loses sight of them, and whatever happens next is invisible."
+    - "Most of the design work went into that gap: what the interface does while the user is somewhere else, and what it says if they never come back."
+  problem:
+    - "A silent wait reads as a failure. Users who cannot tell the difference between a pending signature and a lost transaction will retry, and a retry can mean signing twice. The flow had to make waiting visible and make the difference between the states obvious."
+  process:
+    - { title: "Write out the states", text: "Enumerated every step's success, pending, rejected, timed-out and failed states before drawing anything, then designed backwards from what the user should believe at each point." }
+    - { title: "Design the leave and return", text: "Made the hand-off to the wallet an explicit, visible step. On return, the interface resumes at the correct state rather than restarting the user's intent." }
+    - { title: "Show the whole transaction, not a button", text: "The confirmation panel carries asset, amount, network, fee and the estimated result. A user approving a signature should be approving numbers, not a brand." }
+    - { title: "Make failure recoverable", text: "Every failure state names the cause and offers one clear next action. Ambiguous failures are what push users into repeating an action that already went through." }
+  decisions:
+    - { title: "Signed, pending and confirmed are three things", text: "Collapsing them into a spinner is the single most common cause of double-signed transactions. The interface keeps them distinct, with a confirmation counter while the chain catches up." }
+    - { title: "Countdown over uncertainty", text: "The pending state shows progress against an expected confirmation time. Users tolerate a visible wait far better than an indefinite one." }
+    - { title: "Recovery is a state, not an error", text: "Recovering from a failure sits inside the same flow rather than sending the user back to the start, because the transaction may already exist on chain." }
+  outcome:
+    - "The flow pattern became the reference for every transaction surface in the product, including withdrawals and internal transfers, because all of them hit the same waiting problem."
+  next:
+    - "Nonce conflicts and gas spikes are handled at the data layer and surfaced generically. A trader who understands why a transaction is stuck would rather see the cause than a retry button."
+
+- slug: proj-deposit
+  title: "Deposit / Withdrawal Centre"
+  category: "Wallet & Assets"
+  lede: "Multi-chain deposits and withdrawals, with a design that assumes people will check the address three times and helps them do it."
+  meta:
+    - { label: "Role", value: "Product design, interaction, front-end" }
+    - { label: "Platforms", value: "WEB · H5 · APP" }
+    - { label: "Scope", value: "Asset and network selection, addresses, limits" }
+  intro:
+    - "Sending assets to the wrong network is the failure users fear most, and it is permanent. That fear produces behaviour: copying an address, pasting it, checking the first and last characters, and doing it again."
+    - "The design decision was to support that behaviour instead of designing it away. A screen that makes verification easy is faster in practice than one that claims verification is unnecessary."
+  problem:
+    - "Network selection and asset selection are two dimensions, and getting either wrong loses funds. Presenting them as two independent dropdowns makes the pairing easy to miss, and the mistake is unrecoverable."
+  process:
+    - { title: "Bind asset to network", text: "Selection is presented as asset-plus-network pairs rather than separate pickers, so the combination the user chooses is the combination they send on." }
+    - { title: "Put the warning where the risk is", text: "The network warning sits next to the address, not at the top of the form. It is read at the moment of copying, which is when it matters." }
+    - { title: "Design the withdrawal limits", text: "Limits, fees and expected credit time are shown before submission rather than as an error afterwards. Net amount is the number that decides the action, so it is shown first." }
+    - { title: "Pair with the operations side", text: "Designed the user screen together with the console that processes it, so approval, audit and the user-visible status agree with each other." }
+  decisions:
+    - { title: "Explicit over clever", text: "A visible warning that states the consequence outperformed a cleaner layout without it in every review. The unpleasant sentence earns its space." }
+    - { title: "One address at a time", text: "The screen never shows addresses for two networks together. Side-by-side comparison looked helpful and was the most likely route to copying the wrong one." }
+    - { title: "Confirmation progress is part of the balance", text: "Deposits in progress appear alongside available balance with their confirmation count, so the number on screen matches what the user expects to have." }
+  outcome:
+    - "Deposit and withdrawal share one pattern across web and app, and the operations console reads from the same state model, so an operator and a user see consistent status for the same transaction."
+  next:
+    - "The minimum deposit amount is present but underweighted. It should be adjacent to the address field, because users discover it by sending too little."
+
+- slug: proj-ops
+  title: "Operations & Risk Console"
+  category: "Admin & Risk"
+  lede: "An internal console for asset audit, abnormal trades, node status and alerting, designed for someone who sits in it for a full shift."
+  meta:
+    - { label: "Role", value: "Product design, front-end" }
+    - { label: "Platforms", value: "WEB (internal)" }
+    - { label: "Scope", value: "Alerts, audit, trades, node health" }
+  intro:
+    - "Internal tools are usually designed as if they were customer products, with the same spacing, hierarchy and restraint. Then they get used eight hours a day by three people who memorise the layout and care about exactly two things: what changed, and what needs me."
+    - "This console is deliberately denser than anything user-facing. Scan paths and colour semantics carry the weight that whitespace carries elsewhere."
+  problem:
+    - "Alerting that fires on everything is alerting that gets ignored. The console had to separate the signal that requires an operator right now from the noise that can be reviewed later, without hiding anything."
+  process:
+    - { title: "Start from the shift, not the feature", text: "Worked from what an operator checks on arrival and on each handover, then arranged the surfaces in that order. Summary first, queue second, detail on demand." }
+    - { title: "Give severity a fixed meaning", text: "Four levels, each mapped to a required action and a colour used nowhere else in the interface. If a colour appears, it means one thing." }
+    - { title: "Design the audit trail as the primary record", text: "Every high-risk action leads to the question of who did it and when, so the trail is a full view rather than a hidden log." }
+    - { title: "Keep raw detail reachable", text: "Operators need the unfiltered data eventually. Detail views show the underlying values rather than only the system's interpretation of them." }
+  decisions:
+    - { title: "Density over comfort", text: "Row height was reduced and more rows were shown per screen. A tool used continuously benefits from more information per glance, unlike a page a customer visits once." }
+    - { title: "Severity colour is reserved", text: "The four severity colours are not used for anything decorative. Reusing them for styling would erode the only fast signal the console has." }
+    - { title: "Action trails are first class", text: "Approval, rejection and override all record actor, timestamp and reason as part of the action, not as something reconstructed later from logs." }
+  outcome:
+    - "The console consolidated asset audit, abnormal trade review, node status and alerting into one surface, with the same data model that drives the user-facing transaction states."
+  next:
+    - "There is no shift handover view. A short summary of what happened during the last shift would be the single highest-value addition for the people who actually use this."
+
+- slug: proj-audit
+  title: "Withdrawal Approval & Audit Trail"
+  category: "Admin & Risk"
+  lede: "An approval flow for the action that moves real money, where the constraint is not decoration but confirmation, feedback and a trail that survives scrutiny."
+  meta:
+    - { label: "Role", value: "Interaction design, front-end" }
+    - { label: "Platforms", value: "WEB (internal)" }
+    - { label: "Scope", value: "Approval queue, risk scoring, audit trail" }
+  intro:
+    - "An approval screen is judged by what it prevents. A reviewer has seconds to decide on a request that may be legitimate, and the design's job is to put the deciding facts in front of them without burying them in context."
+  problem:
+    - "A queue of requests that all look identical invites pattern-matching, and pattern-matching is how a fraudulent withdrawal gets approved. The screen had to make each request visibly different in the ways that matter."
+  process:
+    - { title: "Surface the risk first", text: "Risk score and its contributors lead the detail view. The reviewer's first question is whether this is unusual, so it is answered before the transaction detail." }
+    - { title: "Make governance visible", text: "Multi-signature requirements are shown as a count of who has approved, so a reviewer knows whether they are the first or the last signature." }
+    - { title: "Record the trail inline", text: "Submission, risk scoring, each approval and the queued signature are one timeline in the same view, rather than separate log entries elsewhere." }
+    - { title: "Design the rejection path", text: "Rejecting asks for a reason and records it. The path that refuses money needs as much care as the path that releases it, because it will be questioned." }
+  decisions:
+    - { title: "Colour by state, not by row", text: "Awaiting, approved and rejected are carried by the card's state indicator rather than by tinting whole rows, which made the queue read as decoration and blurred the distinction." }
+    - { title: "Approval is deliberately slow", text: "The confirm action restates amount, destination and the remaining approvals needed. Friction here is a feature, and the reviewers agreed rather than complained." }
+    - { title: "Reason is mandatory on rejection", text: "A required reason costs a few seconds and produces the record that makes the decision defensible months later." }
+  outcome:
+    - "Approval, audit and the user-visible withdrawal status all run off the same state model, so no participant has a different version of what happened."
+  next:
+    - "Risk score contributors are shown as a list without their relative weight. Ranking them would let a reviewer see which factor actually drove the score instead of reading all of them equally."
+
+- slug: proj-ds
+  title: "Exchange Design System"
+  category: "Design System"
+  lede: "The component set this product actually needs, built for web, H5 and app at the same time, so a new screen stops being a redesign."
+  meta:
+    - { label: "Role", value: "Design system, component design, front-end" }
+    - { label: "Platforms", value: "WEB · H5 · APP" }
+    - { label: "Scope", value: "Foundations, components, patterns" }
+  intro:
+    - "A trading product accumulates components faster than most, because every market view wants its own version of a table, a tag or a panel. The system exists to stop that, and to stop the three platforms drifting apart in ways nobody notices until they compare screens."
+  problem:
+    - "The same status appears in five places with five different colours, and the same table has five implementations. The cost is not visual inconsistency, it is that a change to how a state is represented has to be made five times."
+  process:
+    - { title: "Start from states, not screens", text: "Enumerated the states the product needs to express, then built components that carry those states. Screens are assembled from them rather than designed first and componentised later." }
+    - { title: "Set the foundations once", text: "Colour, spacing, elevation and type defined as a single set of decisions, so sizes stop being chosen per screen." }
+    - { title: "Design the platform differences explicitly", text: "Documented where web, H5 and app diverge rather than letting each platform improvise. Differences are decisions, not drift." }
+    - { title: "Cover the awkward states", text: "Loading, empty, partial, failed and over-limit were component variants from the start, because these are the states that get skipped when a component is drawn for a happy path." }
+  decisions:
+    - { title: "Fewer components, more variants", text: "One table with variants beats four table-like components. Fewer components means fewer places for behaviour to diverge." }
+    - { title: "Status is a token, not a colour", text: "States map to semantic tokens which resolve per theme. No screen chooses a hex value for a status." }
+    - { title: "Document the exceptions", text: "Where a platform breaks the rule, the reason is written down. Undocumented exceptions become precedent." }
+  outcome:
+    - "The component set covers the surfaces the product repeatedly needed, with the same states expressible on all three platforms, so multi-platform delivery became assembly rather than reinvention."
+  next:
+    - "The system is strong on components and weak on patterns. Guidance for composing them into a screen, especially for dense trading layouts, is the missing half."
+
+- slug: proj-tokens
+  title: "Tokens, Type Scale & Motion Specs"
+  category: "Design System"
+  lede: "Colour, spacing, elevation and type as one decision set, plus the motion layer that is usually improvised: durations, easing, and Lottie and Rive specs."
+  meta:
+    - { label: "Role", value: "Design system, motion design, front-end" }
+    - { label: "Platforms", value: "WEB · H5 · APP" }
+    - { label: "Scope", value: "Tokens, type scale, motion, animation states" }
+  intro:
+    - "Foundations are invisible when they are right and expensive when they are missing. Without a defined scale, every screen picks its own spacing, and the product looks assembled rather than designed."
+    - "Motion was included here rather than treated as a finishing pass, because in a trading product motion either explains a state change or it gets in the way. There is not much middle ground."
+  problem:
+    - "Animation gets added at the end and then removed at the end, when the first version causes complaints. Specifying duration and easing up front avoids the whole cycle, and makes the animations that remain defensible."
+  process:
+    - { title: "Define the scales as tokens", text: "Colour, spacing, radius and elevation as one set of named values. Semantic states resolve to tokens rather than to hex values, so a theme change is a data change." }
+    - { title: "Set a type scale that survives data", text: "The scale had to work for labels in a dense table as well as for headings. Sizes were chosen against real content, not placeholder text." }
+    - { title: "Write the motion rules", text: "One duration and easing pair per interaction class, with a stated rule for when an element animates at all. Where the rule was decoration, the answer was usually no." }
+    - { title: "Specify the animation states", text: "Loading, success, error and empty states specified in Lottie and Rive with their trigger conditions, so the animations are specified rather than improvised per screen." }
+  decisions:
+    - { title: "Motion explains state change", text: "Animation is used where something changed and the user needs to notice. Ambient and decorative motion was removed, and the product reads calmer for it." }
+    - { title: "No animation in the data grid", text: "Rows in the order book and trade tables do not animate. At high update rates motion reads as instability." }
+    - { title: "Specs before implementation", text: "Delivering duration, easing and trigger together meant front-end could implement motion as specified rather than substituting what was easy." }
+  outcome:
+    - "Spacing and colour choices became references rather than decisions, and motion shipped as specified instead of being reinvented per screen."
+  next:
+    - "The type scale is tuned for Latin text. It needs a defined companion for Chinese and other scripts, since the same sizes do not read the same way across scripts."
+
+- slug: proj-campaign
+  title: "Overseas Campaign Visuals"
+  category: "Brand & Visual"
+  lede: "Marketing visuals for international campaigns, built on one brand core but read differently in Europe, the US and Southeast Asia."
+  meta:
+    - { label: "Role", value: "Visual design, art direction" }
+    - { label: "Markets", value: "EU · US · SEA" }
+    - { label: "Scope", value: "Campaign key art, social sets, adaptations" }
+  intro:
+    - "A campaign that travels has to keep its identity without being identical. The brand core stays; typography weight, imagery and colour temperature shift with what each market responds to."
+  problem:
+    - "A single visual applied everywhere reads as foreign somewhere. Over-adapting loses the brand. The work is finding which elements carry identity and which ones carry meaning to a market, and being willing to change the second group."
+  process:
+    - { title: "Separate identity from expression", text: "Decided what must stay fixed (mark, core palette, type family) and what may shift per market (imagery, saturation, composition density)." }
+    - { title: "Build a system, not a poster", text: "The layout rules generate a set of assets rather than one hero, so a campaign can be extended without redrawing it." }
+    - { title: "Do the localisations as variants", text: "Each market variant is a documented adjustment of the same system, so the differences are deliberate and repeatable." }
+    - { title: "Design for the placement", text: "Assets were composed against real placements, since a layout that works as a hero rarely works at social aspect ratios." }
+  decisions:
+    - { title: "Warm tones for one market, cooler for another", text: "Colour temperature is the fastest lever for reading differently across markets without breaking the palette. It changes impression while keeping the brand recognisable." }
+    - { title: "Type weight over type change", text: "Rather than swapping the family, weight and tracking carry the tone. Identity survives and the localisation is still felt." }
+    - { title: "Composition density as a variable", text: "Some markets respond to denser, information-rich layouts and others to a single message. Density became a documented variant instead of one layout applied twice." }
+  outcome:
+    - "Campaigns ship as a system with documented market variants, so producing a new market is adaptation rather than a new design."
+  next:
+    - "The variants were defined from market research rather than local testing. The next round should validate the adjustments with people in each market instead of assuming the read."
+
+- slug: proj-identity
+  title: "Brand Identity & Marketing Kit"
+  category: "Brand & Visual"
+  lede: "Identity with the practical parts attached: lockups, palette roles, type rules, social templates and presentation layouts."
+  meta:
+    - { label: "Role", value: "Visual design, art direction" }
+    - { label: "Scope", value: "Lockups, palette roles, applications" }
+  intro:
+    - "An identity that only exists as a logo gets reinterpreted by everyone who touches it. The kit exists so a campaign can be assembled without redrawing the brand each time."
+  problem:
+    - "Guidelines usually define the mark thoroughly and the palette loosely, so colour usage drifts first. Drift in colour is what makes a brand stop looking like itself."
+  process:
+    - { title: "Define the mark system", text: "Primary lockup, stacked, monogram and inverted versions with their minimum sizes and clear space, so the mark has an answer for every placement." }
+    - { title: "Give the palette jobs", text: "Colour defined by role and proportion rather than as a list of swatches. Roles are what keep usage consistent when different people build different assets." }
+    - { title: "Show applications, not theory", text: "The kit demonstrates the identity in social, presentation and product contexts. Examples are followed; principles are interpreted." }
+    - { title: "Handle the inverted case", text: "The dark and light variants are defined as first-class, since most of this brand lives on dark surfaces." }
+  decisions:
+    - { title: "Proportional colour rules", text: "The palette carries percentage guidance so assets share a visual balance regardless of who assembles them." }
+    - { title: "Templates over instructions", text: "Editable templates removed more inconsistency than written rules, because the path of least resistance became the correct one." }
+    - { title: "One accent, used sparingly", text: "Keeping the accent colour rare preserves its ability to draw the eye where it matters." }
+  outcome:
+    - "Campaign and presentation assets can be produced from the kit without a designer re-deciding the brand each time."
+  next:
+    - "The kit has no motion identity. For a product that lives in an app, defining how the brand moves, not just how it sits, is the obvious gap."
+
+- slug: proj-metaverse
+  title: "Metaverse Space Concept"
+  category: "Brand & Visual"
+  lede: "A spatial concept for a branded Web3 environment: zones, movement, lighting direction and how presence should read when users are represented rather than listed."
+  meta:
+    - { label: "Role", value: "Concept, spatial design, art direction" }
+    - { label: "Scope", value: "Layout, zones, lighting, presence" }
+  intro:
+    - "A brand that has only existed on flat screens has no rules for depth, scale or distance. This concept establishes them, and explores what the brand is when a user can walk through it rather than read it."
+  problem:
+    - "Spatial interfaces fail by being either a website with perspective or a space with nothing to do. The design has to give people a reason to move, and make their position in the space mean something."
+  process:
+    - { title: "Define zones by intent", text: "Laid the space out as zones with a purpose: an exchange hall, a stage for announcements, a gallery for work. The layout follows what people come to do." }
+    - { title: "Make presence legible", text: "Defined how many people are visible in a zone at once, how proximity reads as interest, and how the count is visible without reading as a leaderboard." }
+    - { title: "Decide the lighting model", text: "Lighting was set as a brand decision, with the accent used for direction and emphasis. In a space, light does the work colour does on a flat layout." }
+    - { title: "Keep it buildable", text: "Constrained the geometry to what could actually be produced. A concept that cannot be modelled is an illustration, not a direction." }
+  decisions:
+    - { title: "Few zones, clearly different", text: "Three distinct zones beat ten similar ones. Users need to know where they are, and similarity makes a space feel like a maze." }
+    - { title: "The accent lights the way", text: "Reserving the brand accent for light and emphasis means navigation is branded without adding signage." }
+    - { title: "Presence without pressure", text: "Showing who is present, but not ranking them, keeps the space social rather than competitive." }
+  outcome:
+    - "The concept gives the brand a defined behaviour in three dimensions, with zone layout, lighting and presence rules that could be productionised."
+  next:
+    - "Navigation between zones is unresolved. I designed the destinations and left the movement between them as an open question, which is the part that determines whether people actually explore."
+
+- slug: proj-ai
+  title: "AI Knowledge Assistant UI"
+  category: "AI Products"
+  lede: "An interface for a RAG and agent product where the hard part is not the chat, it is showing what the system is sure of and what it is guessing."
+  meta:
+    - { label: "Role", value: "Product design, interaction, front-end" }
+    - { label: "Platforms", value: "WEB" }
+    - { label: "Scope", value: "Retrieval, citations, streaming, failure" }
+  intro:
+    - "Most assistant interfaces are a chat box with a send button, which hides everything that matters. Users cannot tell whether an answer came from their documents or from the model's memory, and that difference decides whether the answer is usable."
+  problem:
+    - "An answer that looks the same whether it is grounded or invented trains users to distrust all of it. The interface has to make provenance visible without turning every response into a research report."
+  process:
+    - { title: "Make retrieval visible", text: "Sources are listed with what was retrieved and what was actually cited, so the path from document to answer is inspectable." }
+    - { title: "Design the streaming states", text: "Retrieving, generating, tool-calling and failed are distinct, because a stalled tool call looks identical to a slow model unless the interface says otherwise." }
+    - { title: "Design the empty and low-confidence cases", text: "The case where the corpus does not contain the answer is the one that decides whether people trust the system, so it says so plainly instead of producing something plausible." }
+    - { title: "Keep the run detail available", text: "Model, tokens, latency and rerank information sit in a side rail for the user who wants to judge the process, without cluttering the answer." }
+  decisions:
+    - { title: "Citations in the answer, sources in the rail", text: "Inline markers carry the provenance of a specific claim, while the full retrieval list is a separate view. Both exist; neither crowds the other." }
+    - { title: "Uncertainty is designed, not hidden", text: "Low confidence is displayed with the same weight as a confident answer. Hiding it makes the confident answers worthless too." }
+    - { title: "Failure is a state with a next step", text: "Failed retrieval offers a way forward rather than an error banner, because the usual cause is a question that needs narrowing, not a broken system." }
+  outcome:
+    - "The interface treats retrieval as something the user can inspect rather than an implementation detail, which is what makes the answers defensible in a work context."
+  next:
+    - "Conversation history is weak. Long sessions lose the thread of what was asked earlier, and a structured view of the questions asked would be more useful than another scroll of messages."
+
+- slug: proj-aigc
+  title: "AIGC Visual Exploration Pipeline"
+  category: "AI Products"
+  lede: "A working method rather than a deliverable: generating and iterating visual directions, then taking the surviving one into a real interface."
+  meta:
+    - { label: "Role", value: "Workflow design, prompt engineering, visual direction" }
+    - { label: "Tools", value: "ComfyUI · FLUX" }
+    - { label: "Scope", value: "Direction generation, selection, refinement" }
+  intro:
+    - "Generated images are cheap and generated directions are not. The value of this workflow is not producing images, it is producing several defensible directions quickly and then having a process for rejecting most of them."
+  problem:
+    - "Without structure, image generation produces an endless stream of near-identical options. The bottleneck moves from making images to choosing between them, and the choice gets made on novelty rather than on fit."
+  process:
+    - { title: "Write the prompt as a brief", text: "Prompts carry the constraint set from the actual product: palette, density, platform, mood. An unconstrained prompt produces something attractive that cannot be used." }
+    - { title: "Generate in directions, not images", text: "Work in small batches where each batch tests a different direction. Comparing across directions is useful; comparing twenty variations of one is not." }
+    - { title: "Fix the seed and refine", text: "Once a direction survives, the seed is locked and variables are adjusted one at a time, which makes the changes attributable." }
+    - { title: "Move it into a real interface", text: "The chosen direction goes into an actual layout rather than staying an image. Directions that fail at real density fail here, which is the point of the step." }
+  decisions:
+    - { title: "Constrain before generating", text: "Spending time on the brief beats spending it on retries. Most unusable output comes from an under-specified prompt rather than a weak model." }
+    - { title: "Reject fast, in batches", text: "Whole directions get discarded early. Iterating on an option chosen too soon costs more than starting a new direction." }
+    - { title: "The layout is the test", text: "Nothing is accepted as a direction until it survives being composed into a screen with real content at real size." }
+  outcome:
+    - "The loop from brief to a reviewable direction became short enough to explore several options before committing, which is what the tooling is actually for."
+  next:
+    - "Consistency across a set is still handled by prompt discipline rather than a real system. Defining reusable style references and control layers would make a campaign's assets hold together better."

@@ -28,7 +28,46 @@ npm run build    # writes _site/index.html
 | `_data/strengths.yml` | Resume → Core Strengths |
 | `_data/services.yml` | About page → "What i'm doing" cards |
 | `_data/projects.yml` | Portfolio grid and its filter categories |
+| `_data/case-studies.yml` | One entry per project: the detail page that a card links to |
 | `_data/skills.yml` | Toolbox page groups |
+
+### How the pages fit together
+
+`index.html` is a single page with five sections that toggle in place. The
+portfolio cards open a modal, and the modal's **Read case study** button
+navigates to `work/<slug>.html` — a real second page per project, built from
+`_layouts/case.html` plus the matching entry in `_data/case-studies.yml`.
+
+Because those pages sit one level down, every asset reference goes through
+`{{ page.base }}`: `.` on the index, `..` on the case pages. If you add a
+template and hard-code `./assets/...`, it will work on the index and break on
+every case study page.
+
+Section toggling also supports URL hashes, which is how a case study page links
+back to the right section (`../index.html#portfolio`). Adding a section means
+adding a nav button, a `data-page` article, and nothing else.
+
+### Adding a project
+
+Three things have to agree, and the build fails loudly if they do not:
+
+1. An entry in `_data/projects.yml`, with a `slug` matching the image filename.
+2. A matching entry in `_data/case-studies.yml` with the same `slug`.
+3. Artwork at `assets/images/projects/<slug>.svg`.
+
+`scripts/build.js` errors if a project has no case study (its card would 404) or
+a case study has no project (nothing would link to it).
+
+### Project images
+
+`assets/images/projects/*.svg` are 15 generated placeholder mockups, not real
+work. Replace them by pointing each `image` field at a real export. Keep roughly
+16:9 — the card is `aspect-ratio: 16/9` with `object-fit: cover`, so anything
+taller gets cropped — and under about 200 KB each.
+
+To regenerate or add placeholders, `scripts/generate-placeholders.py` draws them
+(it validates its own XML output and fails the run rather than emitting a file a
+browser will silently refuse).
 
 ### Editing project filters
 

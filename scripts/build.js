@@ -33,51 +33,113 @@ if (fs.existsSync(configPath)) {
 
 const site = { ...config, data: siteData };
 
-// Read index.html
-const indexPath = path.join(root, 'index.html');
-let indexContent = fs.readFileSync(indexPath, 'utf8');
+const outDir = path.join(root, '_site');
 
-// Extract front matter
-let frontMatter = {};
-const fmMatch = indexContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-if (fmMatch) {
-  frontMatter = yaml.load(fmMatch[1]) || {};
-  indexContent = indexContent.slice(fmMatch[0].length);
+function readLayout(name) {
+  const layoutPath = path.join(root, '_layouts', name + '.html');
+  if (!fs.existsSync(layoutPath)) {
+    throw new Error('Missing layout: _layouts/' + name + '.html');
+  }
+  let content = fs.readFileSync(layoutPath, 'utf8');
+  // Strip layout front matter if present
+  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  return fm ? content.slice(fm[0].length) : content;
 }
 
-const page = { ...frontMatter };
+function readPage(file) {
+  const full = path.join(root, file);
+  if (!fs.existsSync(full)) throw new Error('Missing page: ' + file);
+  let content = fs.readFileSync(full, 'utf8');
+  let frontMatter = {};
+  const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (fm) {
+    frontMatter = yaml.load(fm[1]) || {};
+    content = content.slice(fm[0].length);
+  }
+  return { content, frontMatter };
+}
 
-// Render content
-async function build() {
-  let rendered = await engine.parseAndRender(indexContent, { site, page });
+function writeOut(relPath, html) {
+  const dest = path.join(outDir, relPath);
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, html, 'utf8');
+}
 
-  // Apply layout if specified
+async function buildIndex() {
+  const { content, frontMatter } = readPage('index.html');
+  // base is "." here and ".." on the case pages; every asset reference is
+  // prefixed with it so relative paths keep working from any depth.
+  const page = { ...frontMatter, base: '.' };
+
+  let rendered = await engine.parseAndRender(content, { site, page });
   if (frontMatter.layout) {
-    const layoutPath = path.join(root, '_layouts', frontMatter.layout + '.html');
-    if (fs.existsSync(layoutPath)) {
-      let layoutContent = fs.readFileSync(layoutPath, 'utf8');
-      // Strip layout front matter
-      const lfm = layoutContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-      if (lfm) layoutContent = layoutContent.slice(lfm[0].length);
-      rendered = await engine.parseAndRender(layoutContent, { site, page, content: rendered });
+    const layout = readLayout(frontMatter.layout);
+    rendered = await engine.parseAndRender(layout, { site, page, content: rendered });
+  }
+  writeOut('index.html', rendered);
+  return 1;
+}
+
+async function buildCaseStudies() {
+  const studies = siteData['case-studies'] || [];
+  const projects = (siteData.projects && siteData.projects.items) || [];
+  const bySlug = {};
+  projects.forEach((p) => { bySlug[p.slug] = p; });
+
+  const layout = readLayout('case');
+  let count = 0;
+
+  for (let i = 0; i < studies.length; i++) {
+    const work = studies[i];
+    const project = bySlug[work.slug];
+
+    if (!project) {
+      // A case study without a portfolio entry would be unreachable, and a
+      // portfolio entry without a case study would link to a 404. Fail loudly.
+      throw new Error(
+        'No project in _data/projects.yml with slug "' + work.slug + '"'
+      );
     }
+
+    const page = {
+      base: '..',
+      work,
+      project,
+      prev: studies[i - 1] || null,
+      next: studies[i + 1] || null,
+    };
+
+    const html = await engine.parseAndRender(layout, { site, page });
+    writeOut(path.join('work', work.slug + '.html'), html);
+    count++;
   }
 
-  // Write output
-  const outDir = path.join(root, '_site');
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+  // The reverse check: every project must have a case study, otherwise its
+  // card links somewhere that does not exist.
+  const studySlugs = new Set(studies.map((s) => s.slug));
+  const orphans = projects.filter((p) => !studySlugs.has(p.slug)).map((p) => p.slug);
+  if (orphans.length) {
+    throw new Error(
+      'These projects have no case study, so their cards would 404: ' + orphans.join(', ')
+    );
+  }
 
-  // Copy assets
-  const assetsSrc = path.join(root, 'assets');
-  const assetsDst = path.join(outDir, 'assets');
-  copyRecursive(assetsSrc, assetsDst);
+  return count;
+}
 
-  fs.writeFileSync(path.join(outDir, 'index.html'), rendered, 'utf8');
+async function build() {
+  fs.mkdirSync(outDir, { recursive: true });
+
+  copyRecursive(path.join(root, 'assets'), path.join(outDir, 'assets'));
+
+  const pages = await buildIndex();
+  const cases = await buildCaseStudies();
 
   // Tell GitHub Pages to serve the files as-is instead of running Jekyll.
   fs.writeFileSync(path.join(outDir, '.nojekyll'), '', 'utf8');
 
-  console.log('Build complete -> _site/index.html generated.');
+  console.log('Build complete -> _site/index.html + ' + cases + ' case study page(s)');
+  return { pages, cases };
 }
 
 function copyRecursive(src, dst) {

@@ -140,23 +140,48 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+const sectionNames = Array.prototype.map.call(pages, function (page) {
+  return page.dataset.page;
+});
+
+// Show one section. Split out of the click handler so the URL hash on load can
+// take the same path, which is what lets a case study page link back to
+// /#portfolio and land on the right section.
+const showSection = function (name, updateHash) {
+  for (let i = 0; i < pages.length; i++) {
+    pages[i].classList.toggle("active", sectionNames[i] === name);
+  }
+  for (let i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].classList.toggle(
+      "active",
+      navigationLinks[i].innerHTML.trim().toLowerCase() === name
+    );
+  }
+  if (updateHash) {
+    // replaceState rather than pushState: stepping back through every section
+    // the visitor opened is not useful.
+    history.replaceState(null, "", "#" + name);
+  }
+};
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+    showSection(this.innerHTML.trim().toLowerCase(), true);
+    window.scrollTo(0, 0);
   });
 }
+
+const hashSection = function () {
+  const name = window.location.hash.replace("#", "").toLowerCase();
+  if (sectionNames.indexOf(name) !== -1) {
+    showSection(name, false);
+    window.scrollTo(0, 0);
+  }
+};
+
+hashSection();
+window.addEventListener("hashchange", hashSection);
 
 
 
@@ -197,6 +222,7 @@ if (projectItems.length > 0 && projectModalContainer) {
       const webEl = payload.querySelector("[data-payload-web]");
       const npmEl = payload.querySelector("[data-payload-npm]");
       const linkEl = payload.querySelector("[data-payload-link]");
+      const caseEl = payload.querySelector("[data-payload-case]");
 
       if (projectModalImg) {
         projectModalImg.src = imgEl ? imgEl.innerText.trim() : "";
@@ -209,7 +235,19 @@ if (projectItems.length > 0 && projectModalContainer) {
       if (projectModalActions) {
         projectModalActions.innerHTML = "";
 
-        if (webEl && webEl.dataset.payloadWeb) {
+        const hasWeb = !!(webEl && webEl.dataset.payloadWeb);
+
+        // The case study comes first: it is the only destination that belongs
+        // to this site, so it leads and external links follow.
+        if (caseEl && caseEl.dataset.payloadCase) {
+          const caseBtn = document.createElement("a");
+          caseBtn.href = caseEl.dataset.payloadCase;
+          caseBtn.className = hasWeb ? "project-modal-btn secondary" : "project-modal-btn primary";
+          caseBtn.innerHTML = '<ion-icon name="document-text-outline"></ion-icon><span>Read case study</span>';
+          projectModalActions.appendChild(caseBtn);
+        }
+
+        if (hasWeb) {
           const webBtn = document.createElement("a");
           webBtn.href = webEl.dataset.payloadWeb;
           webBtn.target = "_blank";
@@ -239,12 +277,12 @@ if (projectItems.length > 0 && projectModalContainer) {
           projectModalActions.appendChild(npmBtn);
         }
 
-        if (!webEl && !githubEl && linkEl && linkEl.dataset.payloadLink) {
+        if (!hasWeb && !githubEl && linkEl && linkEl.dataset.payloadLink) {
           const linkBtn = document.createElement("a");
           linkBtn.href = linkEl.dataset.payloadLink;
           linkBtn.target = "_blank";
           linkBtn.rel = "noopener noreferrer";
-          linkBtn.className = "project-modal-btn primary";
+          linkBtn.className = "project-modal-btn secondary";
           linkBtn.innerHTML = '<ion-icon name="open-outline"></ion-icon><span>View Project</span>';
           projectModalActions.appendChild(linkBtn);
         }

@@ -46,7 +46,7 @@
               <ion-icon name="eye-outline"></ion-icon>
             </div>
 
-            <img src="{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
+            <img src="{{ page.base }}/{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
           </figure>
 
           <h3 class="project-title">{{ item.title }}</h3>
@@ -59,9 +59,15 @@
         <div class="project-modal-payload" style="display: none;">
           <span data-payload-title>{{ item.title }}</span>
           <span data-payload-category>{{ item.category }}</span>
-          <span data-payload-image>{{ item.image }}</span>
+          <span data-payload-image>{{ page.base }}/{{ item.image }}</span>
           <span data-payload-alt>{{ item.alt }}</span>
           <span data-payload-desc>{{ item.description }}</span>
+          <span data-payload-case="{{ page.base }}/work/{{ item.slug }}.html"></span>
+          {% for s in site.data['case-studies'] %}
+          {% if s.slug == item.slug %}
+          <span data-payload-role>{{ s.meta[0].value }}</span>
+          {% endif %}
+          {% endfor %}
           {% if item.github %}
           <span data-payload-github="{{ item.github }}"></span>
           {% endif %}
