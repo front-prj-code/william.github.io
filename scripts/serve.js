@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const root = path.resolve(__dirname, '..');
 const siteDir = path.join(root, '_site');
 
@@ -49,23 +49,26 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(filePath).pipe(res);
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Dev server running at http://localhost:${PORT}`);
-  console.log('Watching for changes...');
+  if (process.env.WATCH !== '0') console.log('Watching for changes...');
 });
 
-// Watch and rebuild
-const watchDirs = ['_includes', '_data', '_layouts'].map(d => path.join(root, d));
-const watchFiles = [path.join(root, 'index.html')];
+// Watch and rebuild. Skipped when WATCH=0, which is what a hosted
+// sandbox wants: no file changes there, so the watchers are just noise.
+if (process.env.WATCH !== '0') {
+  const watchDirs = ['_includes', '_data', '_layouts'].map(d => path.join(root, d));
+  const watchFiles = [path.join(root, 'index.html')];
 
-for (const dir of watchDirs) {
-  if (fs.existsSync(dir)) {
-    fs.watch(dir, { recursive: true }, debounce(() => rebuild(), 300));
+  for (const dir of watchDirs) {
+    if (fs.existsSync(dir)) {
+      fs.watch(dir, { recursive: true }, debounce(() => rebuild(), 300));
+    }
   }
-}
-for (const file of watchFiles) {
-  if (fs.existsSync(file)) {
-    fs.watch(file, debounce(() => rebuild(), 300));
+  for (const file of watchFiles) {
+    if (fs.existsSync(file)) {
+      fs.watch(file, debounce(() => rebuild(), 300));
+    }
   }
 }
 
