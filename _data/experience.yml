@@ -1,0 +1,28 @@
+- role: "Independent Consultant · Web3 Product / UIUX / Frontend"
+  period: "2021.12 — 2026.08"
+  description: |
+    - Took 0-to-1 Web3, AI and overseas software products end to end: requirement breakdown, product flows, interaction design, front-end build, API and data coordination, production delivery <br>
+    - Designed the full signing journey for trading, wallet, asset and payment products: connect wallet, pick asset, quote, confirm, sign, broadcast, confirm, recover from failure <br>
+    - Built trading, wallet, admin and data-visualisation interfaces with React / Next.js + TypeScript, for responsive web and React Native mobile <br>
+    - Handled the states that break designs in production: live quotes, order book, K-line, depth, positions, order status, dropped connections, failed trades. Prioritised information hierarchy, feedback speed and recoverability <br>
+    - Established a component-based UI approach covering colour, spacing, type, buttons, forms, tables, modals, toasts and status tags plus trading-specific components, which cut repeated design work and kept platforms consistent
+
+- role: "BICoin / Binance ecosystem · Java & Golang Tech Lead"
+  period: "2019.07 — 2021.10"
+  description: |
+    - Rebuilt exchange asset, wallet and payment systems: multi-chain deposits and withdrawals, address generation, sweeping, hot-wallet scheduling, MPC and sharded signing, multisig, withdrawal approval and ledger reconciliation <br>
+    - Built React operations and risk consoles covering asset audit, abnormal trades, withdrawal approval, node status, alerting and action trails, with real weight on confirmation, feedback and the audit trail for high-risk actions <br>
+    - Pushed interaction consistency from the engineering side: idempotency, compensating actions, block confirmations, chain reorgs, nonce conflicts, gas swings and RPC failures all had to be explainable and recoverable in the interface
+
+- role: "CoinBene · Front-end Director / Trading Product Architecture"
+  period: "2017.11 — 2019.06"
+  description: |
+    - Led the React / JavaScript trading terminal and mobile architecture across spot, futures, live quotes, candlesticks, order book, depth chart, orders and fills, funding rate, liquidation and insurance fund <br>
+    - Optimised real-time interaction for volatile markets: WebSocket delta updates, state coalescing, virtual lists, render tuning, reconnect handling and graceful degradation <br>
+    - Worked on information architecture, interaction flows and multi-platform experience for the trading product alongside backend, product and operations
+
+- role: "Yunbi.com · Multi-chain Tech Lead / Exchange Systems"
+  period: "2015.12 — 2017.09"
+  description: |
+    - Built the Ethereum and token trading platform: node and RPC layer, deposit monitoring, confirmed crediting, withdrawal broadcast, block transaction parsing, multisig and offline cold wallet flows <br>
+    - Worked through the high-volume period and the later regulatory wind-down: asset clearance, withdrawals and settlement, with asset consistency, audit and failure recovery as the priority

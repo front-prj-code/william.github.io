@@ -1,0 +1,15 @@
+# 核心匹配能力，对应 WEEX 岗位要求
+- title: "Web3 product depth"
+  description: "CEX, DEX, wallet, DApp, trading terminal, assets and payments, risk consoles. Familiar with the user-side of spot, futures, order books, K-lines, depth, funding rates, deposits and withdrawals, signing, MPC and multisig."
+
+- title: "UI/UX for complex flows"
+  description: "Multi-step transaction flows, information hierarchy, state feedback, error and risk warnings, responsive layout, multi-platform adaptation, component design, design systems and product interaction architecture."
+
+- title: "Visual and interaction engineering"
+  description: "React, Next.js, TypeScript and React Native. Able to turn a design file into a real, running interface, including live quotes, WebSocket updates, trade states, wallet connection and mobile interaction."
+
+- title: "AI and AIGC-assisted design"
+  description: "LLM, agent, RAG, ComfyUI and FLUX. Used for visual exploration, page prototypes, asset generation and copy iteration, which shortens the loop from concept to demo."
+
+- title: "International product work"
+  description: "English information architecture for product surfaces, Web3 scenarios for international users, multi-language, time-zone and currency handling, overseas user habits and cross-team collaboration."

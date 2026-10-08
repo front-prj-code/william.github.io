@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#202024"/><stop offset="100%" stop-color="#17171a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.7">
+      <stop offset="0%" stop-color="#c2453e" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#c2453e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- app frame -->
+  <rect x="60" y="46" width="680" height="352" rx="12" fill="#ffffff" fill-opacity="0.035"
+        stroke="#ffffff" stroke-opacity="0.10"/>
+  <line x1="60" y1="80" x2="740" y2="80" stroke="#ffffff" stroke-opacity="0.10"/>
+  <circle cx="82" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="98" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="114" cy="63" r="4" fill="#ffffff" fill-opacity="0.18"/>
+
+  <rect x="88" y="108" width="92" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="130" width="74" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="152" width="86" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="174" width="66" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="196" width="80" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="218" width="58" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="240" width="88" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="88" y="262" width="70" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="212" y="104" width="300" height="150" rx="8" fill="#ffffff" fill-opacity="0.05"/>
+  <polyline points="226,224 258,196 286,208 316,168 346,186 376,142 406,158 436,124 466,138 496,112" fill="none" stroke="#c2453e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <rect x="212" y="266" width="300" height="12" rx="4" fill="#ffffff" fill-opacity="0.06"/>
+  <rect x="212" y="266" width="188" height="12" rx="4" fill="#c2453e" fill-opacity="0.35"/>
+  <rect x="212" y="296" width="300" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="212" y="314" width="244" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="212" y="332" width="268" height="7" rx="3" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="534" y="104" width="150" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="125" width="172" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="146" width="150" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="167" width="172" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="188" width="150" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="209" width="172" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="230" width="150" height="7" rx="3" fill="#ffffff" fill-opacity="0.13"/>
+  <rect x="534" y="272" width="158" height="40" rx="8" fill="#c2453e" fill-opacity="0.28"/>
+  <text x="400" y="440" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="25" font-weight="600" fill="#ffffff">Spot &amp; Futures Trading Terminal</text>
+  <text x="400" y="468" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffe071" fill-opacity="0.8" letter-spacing="2">TRADING UI</text>
+</svg>

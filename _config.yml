@@ -1,0 +1,9 @@
+title: "WILLIAM YANG"
+description: "Web3 product designer who also ships the front end. Exchange, wallet and trading interfaces for WEB, H5 and APP."
+exclude:
+  - "node_modules"
+  - "package.json"
+  - "package-lock.json"
+  - "scripts"
+  - "README.md"
+  - "info.md"

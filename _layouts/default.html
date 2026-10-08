@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    {% include sidebar.html %}
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      {% include navbar.html %}
+
+      {{ content }}
+
+    </div>
+
+  </main>
+
+  {% include scripts.html %}
+
+</body>
+
+</html>

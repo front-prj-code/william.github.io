@@ -1,0 +1,59 @@
+# 说明：
+# - category_slug 必须等于分类名的小写（前端按按钮文字小写精确匹配）
+# - 配图目前为自绘 SVG 占位图。接入真实作品稿时替换 image 字段即可，
+#   建议导出 16:10、单张压到 200KB 以内。
+
+categories:
+  - name: "All"
+    filter: "all"
+  - name: "Trading UI"
+    filter: "trading ui"
+  - name: "Wallet & Assets"
+    filter: "wallet & assets"
+  - name: "Design System"
+    filter: "design system"
+  - name: "AI Products"
+    filter: "ai products"
+
+items:
+  - title: "Spot & Futures Trading Terminal"
+    category: "Trading UI"
+    category_slug: "trading ui"
+    image: "./assets/images/projects/proj-terminal.svg"
+    alt: "Spot and futures trading terminal"
+    description: "Web trading terminal covering candlesticks, order book, depth chart, orders and fills, funding rate, liquidation and insurance fund. Designed around live data: WebSocket delta updates, state coalescing, and a hierarchy that still reads when the market moves fast."
+
+  - title: "Mobile Trading App"
+    category: "Trading UI"
+    category_slug: "trading ui"
+    image: "./assets/images/projects/proj-mobile.svg"
+    alt: "Mobile trading app"
+    description: "React Native app for the same trading surface on a smaller screen. One-hand reach for the order panel, staged confirmation before a leveraged position, and clear recovery when a request times out mid-trade."
+
+  - title: "Wallet Connect & Signing Flow"
+    category: "Wallet & Assets"
+    category_slug: "wallet & assets"
+    image: "./assets/images/projects/proj-wallet.svg"
+    alt: "Wallet connect and signing flow"
+    description: "The whole signing journey designed as one flow: connect wallet, pick asset, get a quote, confirm, sign, broadcast, wait for confirmation, recover from failure. Every step needed a visible state, because a silent step here reads as a lost transaction."
+
+  - title: "Deposit / Withdrawal Centre"
+    category: "Wallet & Assets"
+    category_slug: "wallet & assets"
+    image: "./assets/images/projects/proj-deposit.svg"
+    alt: "Deposit and withdrawal centre"
+    description: "Multi-chain deposit and withdrawal screens with address generation, network selection, confirmations, limits and fee display. Pairs with an operations console for withdrawal approval, asset audit, node status and the full action trail."
+
+  - title: "Exchange Design System"
+    category: "Design System"
+    category_slug: "design system"
+    image: "./assets/images/projects/proj-ds.svg"
+    alt: "Exchange design system"
+    description: "Colour, spacing and type tokens plus the components this product actually needs: forms, tables, modals, toasts, status tags and trading-specific blocks. Built to cut repeated design work and keep web, H5 and app consistent."
+
+  - title: "AI Knowledge Assistant UI"
+    category: "AI Products"
+    category_slug: "ai products"
+    image: "./assets/images/projects/proj-ai.svg"
+    alt: "AI knowledge assistant interface"
+    description: "Interface for an enterprise RAG and agent product: conversation states, citation display, streaming responses, tool-call feedback and failure handling. ComfyUI and FLUX used during exploration to get from concept to a clickable demo faster."

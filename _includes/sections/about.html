@@ -1,0 +1,63 @@
+<article class="about  active" data-page="about">
+
+  <header>
+    <h2 class="h2 article-title">About me</h2>
+  </header>
+
+  <section class="about-text">
+    {% for paragraph in site.data.profile.bio %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </section>
+
+
+  <!--
+    - service
+  -->
+
+  <section class="service">
+
+    <h3 class="h3 service-title">What i'm doing</h3>
+
+    <ul class="service-list">
+      {% for service in site.data.services %}
+      <li class="service-item">
+
+        <div class="service-icon-box">
+          <img src="{{ service.icon }}" alt="{{ service.alt }}" width="40">
+        </div>
+
+        <div class="service-content-box">
+          <h4 class="h4 service-item-title">{{ service.title }}</h4>
+
+          <p class="service-item-text">
+            {{ service.description }}
+          </p>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+
+  </section>
+
+
+  <!--
+    - testimonials modal
+  -->
+
+  <div class="modal-container" data-modal-container>
+
+    <div class="overlay" data-overlay></div>
+
+    <section class="testimonials-modal">
+
+      <button class="modal-close-btn" data-modal-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+    </section>
+
+  </div>
+
+</article>

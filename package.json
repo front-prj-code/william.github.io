@@ -1,0 +1,19 @@
+{
+  "name": "william-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio site. Layout based on https://github.com/codewithsadee/vcard-personal-portfolio",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "build": "node scripts/build.js",
+    "start": "node scripts/serve.js"
+  },
+  "keywords": [],
+  "author": "WILLIAM",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "js-yaml": "^5.4.1",
+    "liquidjs": "^10.29.0"
+  }
+}

@@ -1,0 +1,19 @@
+- title: "WEB / H5 / APP Interface & Interaction Design"
+  icon: "./assets/images/icon-design.svg"
+  alt: "interface and interaction design icon"
+  description: "End-to-end design for web, H5 and app products: product flows, information hierarchy, interaction specs and the responsive layouts that hold up on all three."
+
+- title: "Trading & Transaction Flows"
+  icon: "./assets/images/icon-dev.svg"
+  alt: "trading flow icon"
+  description: "Order books, candlesticks, depth, positions, funding rates, deposits and withdrawals, wallet signing. The work is mostly in the states: loading, partial fill, risk warning, failure and recovery."
+
+- title: "Design Systems & Component Libraries"
+  icon: "./assets/images/icon-quote.svg"
+  alt: "design system icon"
+  description: "Unified colour, spacing and type tokens plus buttons, forms, tables, modals, toasts and status tags, so multi-platform delivery stops being a redesign every time."
+
+- title: "Design-to-Code & AI-assisted Exploration"
+  icon: "./assets/images/icon-app.svg"
+  alt: "design to code icon"
+  description: "Figma output turned into working React / Next.js / TypeScript interfaces, with LLM and AIGC tooling (ComfyUI, FLUX) used for visual exploration and faster concept-to-demo."

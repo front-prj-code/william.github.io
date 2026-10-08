@@ -1,0 +1,19 @@
+name: "WILLIAM YANG"
+title: "Web3 UI/UX & Interaction Design"
+title2: "Product · Frontend · AI"
+avatar: "./assets/images/avatar.jpg"
+bio:
+  - "I design for exchanges. Spot and futures terminals, order books, candlesticks, depth charts, funding rates, deposits and withdrawals, MPC and multisig signing. Most of the last ten years went into screens where a confusing state costs someone real money, so the interesting part is never the layout. It is what a user sees at 3am when a position is being liquidated and the WebSocket has just dropped."
+  - "I build what I design as well. React, Next.js, TypeScript, React Native, so a handoff is closer to a pull request than a Figma link, and the loading, empty and error states are already in there. Figma and FigJam for the design system and prototypes, ComfyUI and FLUX when I want to explore visuals quickly. Working languages: Chinese and English, both fine for daily use."
+contacts:
+  email: "william.yangshun@gmail.com"
+  birthday: "February 5, 1987"
+  birthday_datetime: "1987-02-05"
+  location: "Remote · Global"
+socials:
+  - name: "GitHub"
+    icon: "logo-github"
+    url: "https://github.com/front-prj-code"
+  - name: "Telegram"
+    icon: "paper-plane"
+    url: "https://t.me/williamflyba"

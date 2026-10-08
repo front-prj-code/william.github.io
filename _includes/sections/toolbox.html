@@ -1,0 +1,29 @@
+<article class="toolbox" data-page="toolbox">
+
+  <header>
+    <h2 class="h2 article-title">Toolbox</h2>
+  </header>
+
+  <section class="service">
+
+    <h3 class="h3 service-title">What I work with</h3>
+
+    <ul class="service-list">
+      {% for group in site.data.skills %}
+      <li class="service-item">
+
+        <div class="service-content-box">
+          <h4 class="h4 service-item-title">{{ group.group }}</h4>
+
+          <p class="service-item-text">
+            {{ group.items }}
+          </p>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+
+  </section>
+
+</article>

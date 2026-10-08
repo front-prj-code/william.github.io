@@ -1,0 +1,16 @@
+node_modules/
+_site/
+.DS_Store
+Thumbs.db
+
+# agent workspace data, never published
+.workbuddy/
+
+# internal requirement notes, not part of the published site
+info.md
+
+# source material kept out of the repo
+me.jpg
+
+# Word lock files
+.~*.docx
