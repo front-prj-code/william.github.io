@@ -14,3 +14,6 @@ me.jpg
 
 # Word lock files
 .~*.docx
+
+# hosting platform marker for the preview build
+.wbapp_*.genie
